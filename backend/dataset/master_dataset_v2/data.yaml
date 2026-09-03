@@ -1,0 +1,8 @@
+names:
+  0: lele
+  1: nila
+nc: 2
+path: C:\Users\rezha\OneDrive\Documents\Program Skripsi\backend\dataset\master_dataset_v2
+test: test/images
+train: train/images
+val: valid/images

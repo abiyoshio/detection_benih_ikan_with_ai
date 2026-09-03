@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Seed Detection System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+     
+    <main class="container">
+        <header>
+            <h1>Aqua<span class="highlight">Vision</span></h1>
+            <p>Sistem Deteksi & Penghitungan Bibit Ikan Berbasis AI</p>
+        </header>
+
+        <div class="glass-card upload-section">
+            <div class="upload-area" id="drop-zone">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3>Pilih atau Tarik Gambar Ke Sini</h3>
+                <p>Format yang didukung: JPG, JPEG, PNG</p>
+                <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
+                <button class="btn-primary" onclick="document.getElementById('file-input').click()">Jelajahi File</button>
+            </div>
+            
+            <div id="preview-container" class="hidden">
+                <img id="image-preview" src="" alt="Preview">
+                <div class="action-buttons">
+                    <button id="btn-detect" class="btn-success">Hitung Bibit Ikan</button>
+                    <button id="btn-reset" class="btn-danger">Hapus</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>AI sedang memproses gambar...</p>
+        </div>
+
+        <div id="result-section" class="glass-card result-section hidden">
+            <h2>Hasil Deteksi</h2>
+            
+            <!-- Gambar hasil deteksi dengan bounding box -->
+            <div class="result-image-container">
+                <img id="result-image" src="" alt="Hasil Deteksi dengan Bounding Box">
+            </div>
+            
+            <!-- Jumlah total dan per kelas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Total Bibit Terdeteksi</h4>
+                    <span id="total-count" class="stat-value highlight">0</span>
+                    <span class="stat-unit">ekor</span>
+                </div>
+            </div>
+            
+            <div id="class-counts-container" class="class-counts">
+                <!-- Hasil per kelas akan muncul di sini -->
+            </div>
+
+            <!-- Statistik confidence gambar ini -->
+            <div class="metrics-section">
+                <h3 class="metrics-title">📊 Statistik Gambar Ini</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-label">Rata-rata Confidence</span>
+                        <div class="metric-bar-wrap">
+                            <div class="metric-bar" id="bar-avg-conf"></div>
+                        </div>
+                        <span class="metric-value" id="val-avg-conf">-</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
